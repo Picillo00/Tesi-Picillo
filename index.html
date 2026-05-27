@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download Report di Sostenibilità - Bonifiche Ferraresi S.p.A.">
+    <meta name="description" content="Download Report di Sostenibilità e DNF - Bonifiche Ferraresi S.p.A.">
     <title>Sostenibilità | BF S.p.A.</title>
     
     <style>
         /* =========================================
            VARIABILI CSS PER LA PALETTE CROMATICA
-           Richiamo al settore primario: verde bosco e marrone terra
            ========================================= */
         :root {
             --verde-bosco: #2E5C31;
@@ -19,7 +18,7 @@
             --bianco: #FFFFFF;
         }
 
-        /* Reset di base e impostazione font sans-serif per la leggibilità */
+        /* Reset di base e impostazione font */
         * {
             margin: 0;
             padding: 0;
@@ -34,7 +33,7 @@
         }
 
         /* =========================================
-           LAYOUT HEADER E NAVIGAZIONE (Flexbox)
+           LAYOUT HEADER E NAVIGAZIONE
            ========================================= */
         header {
             background-color: var(--verde-bosco);
@@ -72,7 +71,7 @@
         }
 
         /* =========================================
-           GRIGLIA DEI REPORT (CSS Grid per Desktop/Mobile)
+           GRIGLIA DEI REPORT (CSS Grid)
            ========================================= */
         .report-section {
             padding: 4rem 2rem;
@@ -82,13 +81,12 @@
 
         .report-grid {
             display: grid;
-            /* Layout adattivo: 1 colonna su mobile, fino a 3 su schermi larghi */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        /* Stile della singola "Card" del report */
+        /* Stile della singola "Card" */
         .report-card {
             background-color: var(--bianco);
             border-radius: 8px;
@@ -115,22 +113,48 @@
         }
 
         /* =========================================
-           PULSANTE DI DOWNLOAD CON HOVER EFFECT
+           GRUPPO PULSANTI (Visualizza e Scarica)
            ========================================= */
-        .btn-download {
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            flex: 1;
             display: inline-block;
-            background-color: var(--verde-bosco);
-            color: var(--bianco);
             text-decoration: none;
-            padding: 0.8rem 1.5rem;
+            padding: 0.7rem 0.5rem;
             border-radius: 5px;
             text-align: center;
             font-weight: bold;
-            transition: background-color 0.3s ease;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        /* Bottone per guardare il PDF */
+        .btn-view {
+            background-color: transparent;
+            color: var(--verde-bosco);
+            border: 2px solid var(--verde-bosco);
+        }
+
+        .btn-view:hover {
+            background-color: var(--verde-bosco);
+            color: var(--bianco);
+        }
+
+        /* Bottone per scaricare il PDF */
+        .btn-download {
+            background-color: var(--verde-bosco);
+            color: var(--bianco);
+            border: 2px solid var(--verde-bosco);
         }
 
         .btn-download:hover {
             background-color: var(--marrone-terra);
+            border-color: var(--marrone-terra);
         }
 
         /* =========================================
@@ -156,43 +180,52 @@
 
     <main>
         <section class="hero">
-            <h1>Archivio Report di Sostenibilità</h1>
-            <p>Trasparenza, innovazione e rispetto per la terra. Consulta i nostri dati ESG.</p>
+            <h1>Archivio Report e Bilanci di Sostenibilità</h1>
+            <p>Trasparenza, innovazione e rispetto per la terra. Consulta le nostre Dichiarazioni Non Finanziarie (DNF).</p>
         </section>
 
         <section id="reports" class="report-section">
-            <h2>Documenti Disponibili</h2>
+            <h2>Documenti Ufficiali Disponibili</h2>
             
             <div class="report-grid">
                 
+                <!-- Card 1: Report 2022 -->
                 <article class="report-card">
                     <div>
-                        <h3>Bilancio di Sostenibilità</h3>
-                        <p>Analisi completa delle performance ESG, indici GRI e obiettivi Agenda 2030.</p>
-                        <small>Sito Ufficiale: BF S.p.A.</small>
+                        <h3>Dichiarazione Non Finanziaria 2022</h3>
+                        <p>Il report del Gruppo BF relativo all'esercizio 2022. Illustra le performance ESG, la gestione responsabile delle risorse e i primi impatti dell'agricoltura rigenerativa.</p>
+                        <small>Formato: PDF ufficiale</small>
                     </div>
-                    <br>
-                    <a href="https://www.bfspa.it/it/sostenibilita" target="_blank" class="btn-download" aria-label="Scarica il Bilancio di Sostenibilità">Visualizza Report</a>
+                    <div class="btn-group">
+                        <a href="https://www.bfspa.it/files/01086/bfdnf2022.pdf" target="_blank" class="btn btn-view">Visualizza</a>
+                        <a href="https://www.bfspa.it/files/01086/bfdnf2022.pdf" download="BF_DNF_2022.pdf" class="btn btn-download">Scarica</a>
+                    </div>
                 </article>
 
+                <!-- Card 2: Report 2023 -->
                 <article class="report-card">
                     <div>
-                        <h3>Report Impatto Idrico</h3>
-                        <p>Dati sul risparmio idrico ottenuto tramite l'agricoltura di precisione e sensori IoT.</p>
-                        <small>Formato: PDF (1.5 MB)</small>
+                        <h3>Dichiarazione Non Finanziaria 2023</h3>
+                        <p>Bilancio di Sostenibilità consolidato del Gruppo BF per l'anno 2023. Focus sull'evoluzione tecnologica dell'agricoltura di precisione e la tutela della biodiversità nei territori presidiati.</p>
+                        <small>Formato: PDF ufficiale</small>
                     </div>
-                    <br>
-                    <a href="report-idrico.pdf" download class="btn-download" aria-label="Scarica il Report Impatto Idrico">Scarica Report</a>
+                    <div class="btn-group">
+                        <a href="https://www.bfspa.it/files/02286/gruppobfdnf2023.pdf" target="_blank" class="btn btn-view">Visualizza</a>
+                        <a href="https://www.bfspa.it/files/02286/gruppobfdnf2023.pdf" download="Gruppo_BF_DNF_2023.pdf" class="btn btn-download">Scarica</a>
+                    </div>
                 </article>
 
+                <!-- Card 3: Report 2024 -->
                 <article class="report-card">
                     <div>
-                        <h3>Tutela della Biodiversità</h3>
-                        <p>Mappe e interventi per la rigenerazione del suolo e la salvaguardia degli ecosistemi locali.</p>
-                        <small>Formato: PDF (2.8 MB)</small>
+                        <h3>Annual Report & DNF 2024</h3>
+                        <p>Relazione Finanziaria Annuale integrata con la Dichiarazione Non Finanziaria per l'esercizio 2024. Include i risultati economici del Gruppo e la relazione finale di revisione.</p>
+                        <small>Formato: PDF ufficiale (Ver. Finale)</small>
                     </div>
-                    <br>
-                    <a href="biodiversita.pdf" download class="btn-download" aria-label="Scarica il Report Tutela della Biodiversità">Scarica Report</a>
+                    <div class="btn-group">
+                        <a href="https://www.bfspa.it/files/02876/1bfannualreport2024v.300425finaleopinion.pdf" target="_blank" class="btn btn-view">Visualizza</a>
+                        <a href="https://www.bfspa.it/files/02876/1bfannualreport2024v.300425finaleopinion.pdf" download="BF_Annual_Report_DNF_2024.pdf" class="btn btn-download">Scarica</a>
+                    </div>
                 </article>
 
             </div>
