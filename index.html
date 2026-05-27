@@ -1,1 +1,208 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download Report di Sostenibilità - Bonifiche Ferraresi S.p.A.">
+    <title>Sostenibilità | BF S.p.A.</title>
+    
+    <style>
+        /* =========================================
+           VARIABILI CSS PER LA PALETTE CROMATICA
+           Richiamo al settore primario: verde bosco e marrone terra
+           ========================================= */
+        :root {
+            --verde-bosco: #2E5C31;
+            --marrone-terra: #8B5A2B;
+            --sfondo-chiaro: #F5F5F0;
+            --testo-scuro: #333333;
+            --bianco: #FFFFFF;
+        }
 
+        /* Reset di base e impostazione font sans-serif per la leggibilità */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--sfondo-chiaro);
+            color: var(--testo-scuro);
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           LAYOUT HEADER E NAVIGAZIONE (Flexbox)
+           ========================================= */
+        header {
+            background-color: var(--verde-bosco);
+            color: var(--bianco);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* =========================================
+           SEZIONE PRINCIPALE (Hero Section)
+           ========================================= */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--marrone-terra);
+            color: var(--bianco);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* =========================================
+           GRIGLIA DEI REPORT (CSS Grid per Desktop/Mobile)
+           ========================================= */
+        .report-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .report-grid {
+            display: grid;
+            /* Layout adattivo: 1 colonna su mobile, fino a 3 su schermi larghi */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Stile della singola "Card" del report */
+        .report-card {
+            background-color: var(--bianco);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+
+        .report-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .report-card h3 {
+            color: var(--verde-bosco);
+            margin-bottom: 1rem;
+        }
+
+        .report-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* =========================================
+           PULSANTE DI DOWNLOAD CON HOVER EFFECT
+           ========================================= */
+        .btn-download {
+            display: inline-block;
+            background-color: var(--verde-bosco);
+            color: var(--bianco);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background-color: var(--marrone-terra);
+        }
+
+        /* =========================================
+           FOOTER SEMANTICO
+           ========================================= */
+        footer {
+            background-color: #222;
+            color: var(--bianco);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav aria-label="Navigazione principale">
+            <div class="logo">BF S.p.A.</div>
+            <div>Sostenibilità 4.0</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Archivio Report di Sostenibilità</h1>
+            <p>Trasparenza, innovazione e rispetto per la terra. Consulta i nostri dati ESG.</p>
+        </section>
+
+        <section id="reports" class="report-section">
+            <h2>Documenti Disponibili</h2>
+            
+            <div class="report-grid">
+                
+                <article class="report-card">
+                    <div>
+                        <h3>Bilancio di Sostenibilità 2023</h3>
+                        <p>Analisi completa delle performance ESG, indici GRI e obiettivi Agenda 2030.</p>
+                        <small>Formato: PDF (3.2 MB)</small>
+                    </div>
+                    <br>
+                    <a href="#" class="btn-download" aria-label="Scarica il Bilancio di Sostenibilità 2023">Scarica Report</a>
+                </article>
+
+                <article class="report-card">
+                    <div>
+                        <h3>Report Impatto Idrico</h3>
+                        <p>Dati sul risparmio idrico ottenuto tramite l'agricoltura di precisione e sensori IoT.</p>
+                        <small>Formato: PDF (1.5 MB)</small>
+                    </div>
+                    <br>
+                    <a href="#" class="btn-download" aria-label="Scarica il Report Impatto Idrico">Scarica Report</a>
+                </article>
+
+                <article class="report-card">
+                    <div>
+                        <h3>Tutela della Biodiversità</h3>
+                        <p>Mappe e interventi per la rigenerazione del suolo e la salvaguardia degli ecosistemi locali.</p>
+                        <small>Formato: PDF (2.8 MB)</small>
+                    </div>
+                    <br>
+                    <a href="#" class="btn-download" aria-label="Scarica il Report Tutela della Biodiversità">Scarica Report</a>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gruppo Bonifiche Ferraresi (BF S.p.A.). Tutti i diritti riservati.</p>
+        <p><small>Piattaforma ottimizzata per l'accessibilità (WCAG) e prestazioni green.</small></p>
+    </footer>
+
+</body>
+</html>
