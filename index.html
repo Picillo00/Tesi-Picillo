@@ -3,169 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download Report di Sostenibilità e DNF - Bonifiche Ferraresi S.p.A.">
-    <title>Sostenibilità | BF S.p.A.</title>
+    <meta name="description" content="Archivio Ufficiale Report di Sostenibilità e DNF - Bonifiche Ferraresi S.p.A.">
+    <title>Sostenibilità & ESG | BF S.p.A.</title>
     
     <style>
         /* =========================================
-           VARIABILI CSS PER LA PALETTE CROMATICA
+           VARIABILI E DESIGN SYSTEM
            ========================================= */
         :root {
-            --verde-bosco: #2E5C31;
+            --verde-primario: #2E5C31;
+            --verde-scuro: #1b381d;
             --marrone-terra: #8B5A2B;
-            --sfondo-chiaro: #F5F5F0;
-            --testo-scuro: #333333;
+            --sfondo-crema: #F9F9F6;
             --bianco: #FFFFFF;
+            --testo-principale: #2D312E;
+            --testo-mutato: #606561;
+            --grigio-badge: #E8EFE9;
+            --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 40px rgba(46, 92, 49, 0.12);
         }
 
-        /* Reset di base e impostazione font */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background-color: var(--sfondo-chiaro);
-            color: var(--testo-scuro);
-            line-height: 1.6;
+            background-color: var(--sfondo-crema);
+            color: var(--testo-principale);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* =========================================
-           LAYOUT HEADER E NAVIGAZIONE
+           HEADER & NAVBAR (Minimal & Elegante)
            ========================================= */
         header {
-            background-color: var(--verde-bosco);
-            color: var(--bianco);
-            padding: 1rem 2rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1.2rem 2rem;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         nav {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        nav .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--verde-primario);
+        }
+
+        nav .tagline {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--marrone-terra);
+            font-weight: 600;
+            border-left: 1px solid #ddd;
+            padding-left: 10px;
         }
 
         /* =========================================
-           SEZIONE PRINCIPALE (Hero Section)
+           HERO SECTION (Layout Asimmetrico con Foto)
            ========================================= */
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background-color: var(--marrone-terra);
-            color: var(--bianco);
+        .hero-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                margin: 1.5rem auto;
+                gap: 1.5rem;
+            }
+            .hero-image {
+                height: 250px !important;
+            }
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            color: var(--verde-scuro);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--testo-mutato);
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 380px;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: var(--shadow-soft);
         }
 
         /* =========================================
-           GRIGLIA DEI REPORT (CSS Grid)
+           SEZIONE REPORT & GRIGLIA CARD
            ========================================= */
         .report-section {
-            padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            color: var(--verde-scuro);
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .section-subtitle {
+            color: var(--testo-mutato);
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
         }
 
         .report-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
 
-        /* Stile della singola "Card" */
+        /* Card Restyling */
         .report-card {
             background-color: var(--bianco);
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 14px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-soft);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .report-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(46, 92, 49, 0.1);
+        }
+
+        /* Badge di classificazione */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--grigio-badge);
+            color: var(--verde-primario);
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 20px;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge.new {
+            background-color: #E2F0D9;
+            color: #1E4620;
         }
 
         .report-card h3 {
-            color: var(--verde-bosco);
+            font-size: 1.35rem;
+            color: var(--verde-scuro);
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .report-card p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            color: var(--testo-mutato);
+            margin-bottom: 2rem;
+            min-height: 70px; /* Allinea i pulsanti se i testi hanno lunghezze diverse */
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--testo-mutato);
+            border-top: 1px solid #F0F2F0;
+            padding-top: 1.2rem;
             margin-bottom: 1.5rem;
         }
 
         /* =========================================
-           GRUPPO PULSANTI (Visualizza e Scarica)
+           BOTTONE UNICO "VISUALIZZA"
            ========================================= */
-        .btn-group {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .btn {
-            flex: 1;
-            display: inline-block;
-            text-decoration: none;
-            padding: 0.7rem 0.5rem;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-
-        /* Bottone per guardare il PDF */
         .btn-view {
-            background-color: transparent;
-            color: var(--verde-bosco);
-            border: 2px solid var(--verde-bosco);
+            display: block;
+            width: 100%;
+            background-color: var(--verde-primario);
+            color: var(--bianco);
+            text-decoration: none;
+            padding: 0.9rem 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(46, 92, 49, 0.15);
         }
 
         .btn-view:hover {
-            background-color: var(--verde-bosco);
-            color: var(--bianco);
-        }
-
-        /* Bottone per scaricare il PDF */
-        .btn-download {
-            background-color: var(--verde-bosco);
-            color: var(--bianco);
-            border: 2px solid var(--verde-bosco);
-        }
-
-        .btn-download:hover {
-            background-color: var(--marrone-terra);
-            border-color: var(--marrone-terra);
+            background-color: var(--verde-scuro);
+            box-shadow: 0 6px 20px rgba(46, 92, 49, 0.3);
         }
 
         /* =========================================
-           FOOTER SEMANTICO
+           FOOTER
            ========================================= */
         footer {
-            background-color: #222;
-            color: var(--bianco);
+            background-color: #141614;
+            color: rgba(255,255,255,0.7);
             text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            border-top: 4px solid var(--verde-primario);
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer small {
+            color: rgba(255,255,255,0.4);
         }
     </style>
 </head>
@@ -173,58 +268,77 @@
 
     <header>
         <nav aria-label="Navigazione principale">
-            <div class="logo">BF S.p.A.</div>
-            <div>Sostenibilità 4.0</div>
+            <div class="logo-area">
+                <div class="logo">BF S.p.A.</div>
+                <div class="tagline">Sostenibilità Italiana</div>
+            </div>
+            <div style="font-size: 0.9rem; font-weight: 600; color: var(--verde-primario);">ESG Portal</div>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <h1>Archivio Report e Bilanci di Sostenibilità</h1>
-            <p>Trasparenza, innovazione e rispetto per la terra. Consulta le nostre Dichiarazioni Non Finanziarie (DNF).</p>
+        <!-- Hero Section Rinnovata -->
+        <section class="hero-container">
+            <div class="hero-text">
+                <h1>Trasparenza e Innovazione per il Futuro della Terra</h1>
+                <p>Benvenuto nell'hub documentale di Gruppo BF. Qui raccogliamo i dati, le certificazioni e le visioni strategiche che guidano le nostre attività agricole industriali verso la transizione ecologica e l'agricoltura 4.0.</p>
+            </div>
+            <!-- Immagine panoramica reale degli stabilimenti e campi BF -->
+            <img src="https://www.ristorando.eu/wp-content/uploads/2021/01/15.jpg" alt="Stabilimenti Bonifiche Ferraresi" class="hero-image">
         </section>
 
+        <!-- Griglia dei Documenti -->
         <section id="reports" class="report-section">
-            <h2>Documenti Ufficiali Disponibili</h2>
+            <h2 class="section-title">Bilanci Integrati e DNF</h2>
+            <p class="section-subtitle">Seleziona un documento ufficiale per consultare liberamente i dati di impatto ed esercizio.</p>
             
             <div class="report-grid">
                 
-                <!-- Card 1: Report 2022 -->
+                <!-- Card 1: 2022 -->
                 <article class="report-card">
                     <div>
+                        <span class="badge">Archivio</span>
                         <h3>Dichiarazione Non Finanziaria 2022</h3>
-                        <p>Il report del Gruppo BF relativo all'esercizio 2022. Illustra le performance ESG, la gestione responsabile delle risorse e i primi impatti dell'agricoltura rigenerativa.</p>
-                        <small>Formato: PDF ufficiale</small>
+                        <p>Il documento programmatico che traccia il punto di partenza del nostro ecosistema ESG, focalizzato sull'efficientamento energetico delle filiere agroindustriali.</p>
                     </div>
-                    <div class="btn-group">
-                        <a href="https://www.bfspa.it/files/01086/bfdnf2022.pdf" target="_blank" class="btn btn-view">Visualizza</a>
-                        <a href="https://www.bfspa.it/files/01086/bfdnf2022.pdf" download="BF_DNF_2022.pdf" class="btn btn-download">Scarica</a>
+                    <div>
+                        <div class="card-meta">
+                            <span>Formato: PDF</span>
+                            <span>Stato: Approvato</span>
+                        </div>
+                        <a href="https://www.bfspa.it/files/01086/bfdnf2022.pdf" target="_blank" class="btn-view">Visualizza Report</a>
                     </div>
                 </article>
 
-                <!-- Card 2: Report 2023 -->
+                <!-- Card 2: 2023 -->
                 <article class="report-card">
                     <div>
+                        <span class="badge">Consolidato</span>
                         <h3>Dichiarazione Non Finanziaria 2023</h3>
-                        <p>Bilancio di Sostenibilità consolidato del Gruppo BF per l'anno 2023. Focus sull'evoluzione tecnologica dell'agricoltura di precisione e la tutela della biodiversità nei territori presidiati.</p>
-                        <small>Formato: PDF ufficiale</small>
+                        <p>Rendicontazione d'impatto incentrata sulla tutela della biodiversità, sull'introduzione massiva di sensori IoT nei campi e sul monitoraggio del risparmio idrico.</p>
                     </div>
-                    <div class="btn-group">
-                        <a href="https://www.bfspa.it/files/02286/gruppobfdnf2023.pdf" target="_blank" class="btn btn-view">Visualizza</a>
-                        <a href="https://www.bfspa.it/files/02286/gruppobfdnf2023.pdf" download="Gruppo_BF_DNF_2023.pdf" class="btn btn-download">Scarica</a>
+                    <div>
+                        <div class="card-meta">
+                            <span>Formato: PDF</span>
+                            <span>Stato: Approvato</span>
+                        </div>
+                        <a href="https://www.bfspa.it/files/02286/gruppobfdnf2023.pdf" target="_blank" class="btn-view">Visualizza Report</a>
                     </div>
                 </article>
 
-                <!-- Card 3: Report 2024 -->
+                <!-- Card 3: 2024 -->
                 <article class="report-card">
                     <div>
+                        <span class="badge new">Ultimo Rilascio</span>
                         <h3>Annual Report & DNF 2024</h3>
-                        <p>Relazione Finanziaria Annuale integrata con la Dichiarazione Non Finanziaria per l'esercizio 2024. Include i risultati economici del Gruppo e la relazione finale di revisione.</p>
-                        <small>Formato: PDF ufficiale (Ver. Finale)</small>
+                        <p>L'integrazione definitiva tra dati finanziari e performance di sostenibilità. Include l'analisi dell'impronta carbonica di filiera e la relazione di revisione finale.</p>
                     </div>
-                    <div class="btn-group">
-                        <a href="https://www.bfspa.it/files/02876/1bfannualreport2024v.300425finaleopinion.pdf" target="_blank" class="btn btn-view">Visualizza</a>
-                        <a href="https://www.bfspa.it/files/02876/1bfannualreport2024v.300425finaleopinion.pdf" download="BF_Annual_Report_DNF_2024.pdf" class="btn btn-download">Scarica</a>
+                    <div>
+                        <div class="card-meta">
+                            <span>Formato: PDF</span>
+                            <span>Stato: Ufficiale</span>
+                        </div>
+                        <a href="https://www.bfspa.it/files/02876/1bfannualreport2024v.300425finaleopinion.pdf" target="_blank" class="btn-view">Visualizza Report</a>
                     </div>
                 </article>
 
@@ -234,7 +348,7 @@
 
     <footer>
         <p>&copy; 2026 Gruppo Bonifiche Ferraresi (BF S.p.A.). Tutti i diritti riservati.</p>
-        <p><small>Piattaforma ottimizzata per l'accessibilità (WCAG) e prestazioni green.</small></p>
+        <p><small>Piattaforma di consultazione pubblica ottimizzata per l'accessibilità e prestazioni digitali a basso impatto carbonico.</small></p>
     </footer>
 
 </body>
